@@ -1,0 +1,79 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# banlist
+
+This is a simple API allowing show, add and modify bans.
+
+## Questions Collection [/banlist]
+
+### Show bans [GET]
+
+Можно запросить определенное количество банов на страницу и указать нужную страницу.
+Если банов или страниц меньше, чем указано в запросе, то вернет сколько есть.
+
++ Request (application/json)
+
+        {
+            "count": 15,
+            "page": 1
+        }
+
++ Response 200 (application/json)
+
+        [
+            {
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "player_name": "Vampir",
+                "player_steamid32": "",
+                "admin_name": "Vampir",
+                "admin_steamid32": "",
+                "length": 666,
+                "end_time": "2015-08-05T08:40:51.620Z",
+                "reason": "Wallhack"
+            }
+        ]
+
+### Create a New Ban [POST]
+
+Working in progress
+
++ Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
